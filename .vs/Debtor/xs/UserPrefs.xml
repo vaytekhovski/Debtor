@@ -1,43 +1,45 @@
 ﻿<Properties StartupConfiguration="{7AF292D9-2C43-459C-9356-DFB558FC6EB5}|https">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Debtor.Core FirstBuild="True" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Debtor.API PreferredExecutionTarget="/Applications/Yandex.app" FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.Core/Service/Commands/UpdateTransactionStatusCommand.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.API/Controllers/AccountController.cs">
     <Files>
       <File FileName="Debtor.API/Properties/launchSettings.json" />
-      <File FileName="Debtor.API/Program.cs" Line="9" Column="1" />
-      <File FileName="Debtor.API/RegisterDependedServices.cs" Line="14" Column="2" />
-      <File FileName="Debtor.Core/Class1.cs" Line="5" Column="1" />
-      <File FileName="Debtor.Core/MongoDBSettings.cs" Line="2" Column="1" />
-      <File FileName="Debtor.Core/IMongoDBSettings.cs" Line="7" Column="50" />
-      <File FileName="Debtor.Core/Common/Mapping/AssemblyMappingProfile.cs" Line="6" Column="1" />
-      <File FileName="Debtor.Core/Common/Mapping/IMapWIth.cs" Line="5" Column="1" />
-      <File FileName="Debtor.Core/SetupMiddlewarePipeline.cs" Line="2" Column="1" />
-      <File FileName="Debtor.API/appsettings.json" Line="14" Column="1" />
-      <File FileName="Debtor.API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
-      <File FileName="Debtor.Core/Models/User.cs" Line="13" Column="23" />
-      <File FileName="Debtor.Core/Models/Transaction.cs" Line="22" Column="55" />
-      <File FileName="Debtor.Core/Models/Joint.cs" Line="20" Column="45" />
-      <File FileName="Debtor.Core/Service/Commands/CreateUser/CreateUserCommand.cs" Line="35" Column="2" />
-      <File FileName="Debtor.Core/Service/Commands/UpdateUserNameCommand.cs" Line="40" Column="2" />
+      <File FileName="Debtor.API/Program.cs" Line="7" Column="1" />
+      <File FileName="Debtor.API/RegisterDependedServices.cs" Line="49" Column="10" />
+      <File FileName="Debtor.Core/Common/Mapping/AssemblyMappingProfile.cs" />
+      <File FileName="Debtor.Core/Common/Mapping/IMapWIth.cs" />
+      <File FileName="Debtor.API/appsettings.json" Line="15" Column="56" />
+      <File FileName="Debtor.API/Controllers/WeatherForecastController.cs" Line="7" Column="56" />
+      <File FileName="Debtor.Core/Models/User.cs" />
+      <File FileName="Debtor.Core/Models/Transaction.cs" />
+      <File FileName="Debtor.Core/Models/Joint.cs" />
+      <File FileName="Debtor.Core/Service/Commands/UpdateUserNameCommand.cs" />
       <File FileName="Debtor.Core/Common/Exceptions/NotFoundException.cs" Line="1" Column="1" />
-      <File FileName="Debtor.Core/Service/Commands/DeleteUserCommand.cs" Line="23" Column="6" />
-      <File FileName="Debtor.Core/Service/Commands/CreateTransactionCommand.cs" Line="42" Column="2" />
-      <File FileName="Debtor.Core/Service/Commands/UpdateTransactionCommand.cs" Line="31" Column="10" />
-      <File FileName="Debtor.Core/Service/Commands/CreateJointCommand.cs" Line="33" Column="36" />
-      <File FileName="Debtor.Core/Service/Commands/UpdateJointCommand.cs" Line="41" Column="45" />
+      <File FileName="Debtor.Core/Service/Commands/DeleteUserCommand.cs" />
+      <File FileName="Debtor.Core/Service/Commands/CreateTransactionCommand.cs" />
+      <File FileName="Debtor.Core/Service/Commands/CreateJointCommand.cs" />
+      <File FileName="Debtor.Core/Service/Commands/UpdateJointCommand.cs" />
+      <File FileName="Debtor.API/SetupMiddlewarePipeline.cs" Line="21" Column="37" />
+      <File FileName="Debtor.API/Controllers/AccountController.cs" Line="27" Column="35" />
+      <File FileName="Debtor.Core/Common/MongoDBSettings.cs" Line="3" Column="30" />
+      <File FileName="Debtor.Core/Common/DependencyInjection.cs" Line="10" Column="38" />
+      <File FileName="Debtor.API/HasScopeHandler.cs" Line="1" Column="1" />
+      <File FileName="Debtor.API/HasScopeRequirement.cs" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Debtor" expanded="True">
-            <Node name="Debtor.API" expanded="True" />
+            <Node name="Debtor.API" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="appsettings.json" selected="True" />
+            </Node>
             <Node name="Debtor.Core" expanded="True">
+              <Node name="Common" expanded="True">
+                <Node name="Exceptions" expanded="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Service" expanded="True">
                 <Node name="Commands" expanded="True" />
@@ -48,4 +50,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Debtor.API PreferredExecutionTarget="/Applications/Yandex.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
