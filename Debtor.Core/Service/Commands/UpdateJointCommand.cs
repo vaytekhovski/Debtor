@@ -23,7 +23,7 @@ public class UpdateJointCommandHandler : IRequestHandler<UpdateJointCommand>
     public UpdateJointCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _joint = database.GetCollection<Joint>(settings.UsersCollectionName);
+        _joint = database.GetCollection<Joint>(settings.UserCollectionName);
     }
 
     public async Task<Unit> Handle(UpdateJointCommand request, CancellationToken cancellationToken)

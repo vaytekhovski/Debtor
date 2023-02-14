@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.API/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.Core/Models/Transaction.cs">
     <Files>
       <File FileName="Debtor.API/Properties/launchSettings.json" />
       <File FileName="Debtor.API/Program.cs" />
@@ -12,7 +12,7 @@
       <File FileName="Debtor.API/appsettings.json" Line="15" Column="28" />
       <File FileName="Debtor.API/Controllers/WeatherForecastController.cs" />
       <File FileName="Debtor.Core/Models/User.cs" />
-      <File FileName="Debtor.Core/Models/Transaction.cs" />
+      <File FileName="Debtor.Core/Models/Transaction.cs" Line="1" Column="1" />
       <File FileName="Debtor.Core/Models/Joint.cs" />
       <File FileName="Debtor.Core/Service/Commands/UpdateUserNameCommand.cs" />
       <File FileName="Debtor.Core/Common/Exceptions/NotFoundException.cs" />
@@ -21,7 +21,7 @@
       <File FileName="Debtor.Core/Service/Commands/CreateJointCommand.cs" />
       <File FileName="Debtor.Core/Service/Commands/UpdateJointCommand.cs" />
       <File FileName="Debtor.API/SetupMiddlewarePipeline.cs" />
-      <File FileName="Debtor.API/Controllers/AccountController.cs" Line="40" Column="16" />
+      <File FileName="Debtor.API/Controllers/AccountController.cs" />
       <File FileName="Debtor.Core/Common/MongoDBSettings.cs" />
       <File FileName="Debtor.Core/Common/DependencyInjection.cs" />
       <File FileName="Debtor.API/HasScopeHandler.cs" />
@@ -30,7 +30,16 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Debtor" expanded="True" />
+          <Node name="Debtor" expanded="True">
+            <Node name="Debtor.API" expanded="True">
+              <Node name="Properties" expanded="True" />
+            </Node>
+            <Node name="Debtor.Core" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="Transaction.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

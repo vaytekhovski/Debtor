@@ -20,7 +20,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, strin
     public CreateUserCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _users = database.GetCollection<User>(settings.UsersCollectionName);
+        _users = database.GetCollection<User>(settings.UserCollectionName);
     }
 
     public async Task<string?> Handle(CreateUserCommand request, CancellationToken cancellationToken)
