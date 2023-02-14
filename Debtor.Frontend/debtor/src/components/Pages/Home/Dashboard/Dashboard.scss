@@ -1,0 +1,22 @@
+$dashboard-background: rgb(62, 52, 65);
+$dashboard-hold-color: rgb(100, 84, 105);
+
+.dashboard {
+  height: 40vh;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $dashboard-background;
+}
+
+@keyframes dashboard-skeleton-loading {
+  0% {
+    background-color: $dashboard-background;
+  }
+  100% {
+    background-color: $dashboard-hold-color;
+  }
+}
+
+.dashboard.skeleton {
+  animation: dashboard-skeleton-loading 1s linear infinite alternate;
+}

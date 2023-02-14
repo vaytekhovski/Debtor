@@ -1,0 +1,15 @@
+$white-text: rgb(234, 201, 234);
+$dark-color: #212121;
+
+.application {
+  margin: 0px auto;
+  max-width: 400px;
+  overflow: hidden;
+  background-color: $dark-color;
+  .content {
+  }
+}
+
+h3 {
+  color: $white-text;
+}

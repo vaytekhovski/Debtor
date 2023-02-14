@@ -19,7 +19,7 @@ public class DeleteAuthorCommandHandler : IRequestHandler<DeleteUserCommand>
     public DeleteAuthorCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _users = database.GetCollection<User>(settings.UsersCollectionName);
+        _users = database.GetCollection<User>(settings.UserCollectionName);
     }
 
     public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)

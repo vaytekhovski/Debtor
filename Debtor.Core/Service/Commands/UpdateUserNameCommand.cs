@@ -20,7 +20,7 @@ public class UpdateUserNameCommandHandler : IRequestHandler<UpdateUserNameComman
     public UpdateUserNameCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _users = database.GetCollection<User>(settings.UsersCollectionName);
+        _users = database.GetCollection<User>(settings.UserCollectionName);
     }
 
     public async Task<Unit> Handle(UpdateUserNameCommand request, CancellationToken cancellationToken)

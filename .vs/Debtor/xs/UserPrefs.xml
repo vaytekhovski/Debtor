@@ -2,47 +2,41 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.API/Controllers/AccountController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Debtor.Core/Models/Transaction.cs">
     <Files>
       <File FileName="Debtor.API/Properties/launchSettings.json" />
-      <File FileName="Debtor.API/Program.cs" Line="7" Column="1" />
-      <File FileName="Debtor.API/RegisterDependedServices.cs" Line="49" Column="10" />
+      <File FileName="Debtor.API/Program.cs" />
+      <File FileName="Debtor.API/RegisterDependedServices.cs" />
       <File FileName="Debtor.Core/Common/Mapping/AssemblyMappingProfile.cs" />
       <File FileName="Debtor.Core/Common/Mapping/IMapWIth.cs" />
-      <File FileName="Debtor.API/appsettings.json" Line="15" Column="56" />
-      <File FileName="Debtor.API/Controllers/WeatherForecastController.cs" Line="7" Column="56" />
+      <File FileName="Debtor.API/appsettings.json" Line="15" Column="28" />
+      <File FileName="Debtor.API/Controllers/WeatherForecastController.cs" />
       <File FileName="Debtor.Core/Models/User.cs" />
-      <File FileName="Debtor.Core/Models/Transaction.cs" />
+      <File FileName="Debtor.Core/Models/Transaction.cs" Line="1" Column="1" />
       <File FileName="Debtor.Core/Models/Joint.cs" />
       <File FileName="Debtor.Core/Service/Commands/UpdateUserNameCommand.cs" />
-      <File FileName="Debtor.Core/Common/Exceptions/NotFoundException.cs" Line="1" Column="1" />
+      <File FileName="Debtor.Core/Common/Exceptions/NotFoundException.cs" />
       <File FileName="Debtor.Core/Service/Commands/DeleteUserCommand.cs" />
       <File FileName="Debtor.Core/Service/Commands/CreateTransactionCommand.cs" />
       <File FileName="Debtor.Core/Service/Commands/CreateJointCommand.cs" />
       <File FileName="Debtor.Core/Service/Commands/UpdateJointCommand.cs" />
-      <File FileName="Debtor.API/SetupMiddlewarePipeline.cs" Line="21" Column="37" />
-      <File FileName="Debtor.API/Controllers/AccountController.cs" Line="27" Column="35" />
-      <File FileName="Debtor.Core/Common/MongoDBSettings.cs" Line="3" Column="30" />
-      <File FileName="Debtor.Core/Common/DependencyInjection.cs" Line="10" Column="38" />
-      <File FileName="Debtor.API/HasScopeHandler.cs" Line="1" Column="1" />
-      <File FileName="Debtor.API/HasScopeRequirement.cs" Line="3" Column="1" />
+      <File FileName="Debtor.API/SetupMiddlewarePipeline.cs" />
+      <File FileName="Debtor.API/Controllers/AccountController.cs" />
+      <File FileName="Debtor.Core/Common/MongoDBSettings.cs" />
+      <File FileName="Debtor.Core/Common/DependencyInjection.cs" />
+      <File FileName="Debtor.API/HasScopeHandler.cs" />
+      <File FileName="Debtor.API/HasScopeRequirement.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Debtor" expanded="True">
             <Node name="Debtor.API" expanded="True">
-              <Node name="Controllers" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
             </Node>
             <Node name="Debtor.Core" expanded="True">
-              <Node name="Common" expanded="True">
-                <Node name="Exceptions" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Service" expanded="True">
-                <Node name="Commands" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Transaction.cs" selected="True" />
               </Node>
             </Node>
           </Node>
