@@ -7,8 +7,12 @@ namespace Debtor.Core.Models;
 [BsonIgnoreExtraElements]
 public class Transaction
 {
+    public Transaction()
+    {
+        this.Id = ObjectId.GenerateNewId().ToString();
+    }
+
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     [BsonElement("userFromId")]
     public string? UserFromId { get; set; }

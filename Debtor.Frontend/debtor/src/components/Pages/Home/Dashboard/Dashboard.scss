@@ -1,11 +1,37 @@
 $dashboard-background: rgb(62, 52, 65);
 $dashboard-hold-color: rgb(100, 84, 105);
+$incoming-color: #7eeec3;
+$outcoming-color: #eea97e;
 
 .dashboard {
-  height: 40vh;
+  height: 35vh;
   padding: 8px;
   border-radius: 8px;
   background-color: $dashboard-background;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-evenly;
+
+  .text-center {
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .status-card {
+    border-radius: 8px;
+    padding: 10px;
+    width: 40%;
+    height: 20px;
+  }
+  .incoming {
+    background-color: $incoming-color;
+  }
+
+  .outcoming {
+    background-color: $outcoming-color;
+  }
 }
 
 @keyframes dashboard-skeleton-loading {

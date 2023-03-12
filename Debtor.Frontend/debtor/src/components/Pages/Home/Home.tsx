@@ -1,21 +1,46 @@
-import React from "react";
-import LoginButton from "../../Buttons/LoginButton";
-import LogoutButton from "../../Buttons/LogoutButton";
+import React, { useEffect } from "react";
+
 import Dashboard from "./Dashboard/Dashboard";
 import TransactionList from "./TransactionList/TransactionList";
-import Toolbar from "./Toolbar/Toolbar";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import {
+  fetchUser,
+  fetchUserFriends,
+  setUserId,
+} from "../../../store/user-actions";
+import { fetchTransactions } from "../../../store/transaction-actions";
+import { fetchDashboard } from "../../../store/dashboard.actions";
+import store from "../../../store";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IHomePageProps {}
+const HomePage = () => {
+  const dispatch = useAppDispatch();
 
-const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
+  const loadData = async () => {
+    console.log("*************loading data");
+    dispatch(setUserId(process.env.REACT_APP_MY_TEST_USER_ID!));
+    const User = store.getState().user;
+    console.log("User");
+    if (User.id !== undefined) {
+      dispatch(fetchUser(User.id));
+      dispatch(fetchDashboard(User.id));
+      dispatch(fetchTransactions(User.id));
+      dispatch(fetchUserFriends(User.id));
+    }
+    console.log("loading data complete");
+  };
+
+  useEffect(() => {
+    try {
+      loadData().then(() => console.log("Loaded"));
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  }, []);
+
   return (
     <>
-      <LoginButton />
-      <LogoutButton />
       <Dashboard />
       <TransactionList />
-      <Toolbar />
     </>
   );
 };

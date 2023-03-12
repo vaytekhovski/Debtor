@@ -7,12 +7,26 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialTransactionState: TransactionArrayModel = {
   all_transactions: [],
   particular_transaction: {
-    id: 0,
-    name: "",
-    date: new Date(),
+    id: "",
+    userFromId: "",
+    userFrom: {
+      id: "",
+      name: "",
+      login: null,
+    },
+    userToId: "",
+    userTo: {
+      id: "",
+      name: "",
+      login: null,
+    },
+    jointId: null,
+    joint: null,
     amount: 0,
     description: "",
     status: "",
+    type: "",
+    date: "2023-02-16T18:10:11.808Z",
   },
 };
 
@@ -25,6 +39,9 @@ const transactionSlice = createSlice({
     },
     setParticularTransaction(state, action: PayloadAction<TransactionModel>) {
       state.particular_transaction = action.payload;
+    },
+    createTransaction(state, action: PayloadAction<TransactionModel>) {
+      state.all_transactions.push(action.payload);
     },
   },
 });

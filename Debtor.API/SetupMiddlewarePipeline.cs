@@ -7,7 +7,7 @@ public static class SetupMiddlewarePipeline
        
         app.UseHttpsRedirection();
         app.UseRouting();
-        app.UseCors("AllowSpecificOrigin");
+        app.UseCors("AllowAll");
 
         app.UseAuthentication();
         app.UseAuthorization();

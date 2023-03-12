@@ -4,12 +4,27 @@ $dark-color: #212121;
 .application {
   margin: 0px auto;
   max-width: 400px;
+  height: 100vh;
   overflow: hidden;
   background-color: $dark-color;
   .content {
+    height: 100vh;
   }
 }
 
-h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
   color: $white-text;
 }

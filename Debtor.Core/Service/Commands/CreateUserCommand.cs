@@ -6,14 +6,14 @@ using MongoDB.Driver;
 
 namespace Debtor.Core.Service.Commands;
 
-public class CreateUserCommand : IRequest<string?>
+public class CreateUserCommand : IRequest<User?>
 {
+    public string CreatorId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string? Login { get; set; }
-    public string? Password { get; set; }
 }
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string?>
+public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, User?>
 {
     public IMongoCollection<User> _users { get; set; }
 
@@ -23,17 +23,31 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, strin
         _users = database.GetCollection<User>(settings.UserCollectionName);
     }
 
-    public async Task<string?> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<User?> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
+        List<string> friends = new List<string>();
+        User creator = new User();
+        if (!string.IsNullOrEmpty(request.CreatorId))
+        {
+            creator = await _users.Find(a => a.Id == request.CreatorId).FirstOrDefaultAsync();
+            friends.Add(creator.Id);
+        }
         var user = new User()
         {
             Name = request.Name,
-            Login = request.Login,
-            Password = request.Password //TODO: hash
+            Login = request.Login ?? "",
+            friendsId = friends
         };
 
         await _users.InsertOneAsync(user);
 
-        return user.Id;
+        if(creator.Id != null)
+        {
+            creator.friendsId.Add(user.Id);
+        }
+
+        await _users.ReplaceOneAsync(u=> u.Id == request.CreatorId, creator);
+
+        return user;
     }
 }
