@@ -20,7 +20,7 @@ public class UpdateTransactionStatusCommandHandler : IRequestHandler<UpdateTrans
     public UpdateTransactionStatusCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _transactions = database.GetCollection<Transaction>(settings.UsersCollectionName);
+        _transactions = database.GetCollection<Transaction>(settings.TransactionCollectionName);
     }
 
     public async Task<Unit> Handle(UpdateTransactionStatusCommand request, CancellationToken cancellationToken)

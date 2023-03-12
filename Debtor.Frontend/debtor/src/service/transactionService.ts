@@ -1,15 +1,11 @@
-import Api from "./Api";
 import { TransactionModel } from "../models/redux-models";
+import Api, { getAsync, postAsync } from "./Api";
 
 export default {
-  async getAllTransactions() {
-    const response = await Api().get("transactions");
-    return response.data;
+  async getAllTransactions(userId: string) {
+    return await getAsync(`transaction/${userId}`);
   },
-  async getParticularTransaction(transaction_id: number) {
-    const response = await Api().get("transactions");
-    return response.data.filter(
-      (transaction: TransactionModel) => transaction.id === transaction_id
-    )[0];
+  async postTransaction(transaction: TransactionModel) {
+    return await postAsync(`transaction`, transaction);
   },
 };

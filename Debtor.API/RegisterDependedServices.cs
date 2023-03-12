@@ -24,19 +24,6 @@ public static class RegisterDependentServices
     {
         Configuration = builder.Configuration;
 
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowSpecificOrigin",
-                builder =>
-                {
-                    builder
-                    .WithOrigins("http://localhost:8080")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials();
-                });
-        });
-
         var domain = $"https://{Configuration["Auth0:Domain"]}/";
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -52,62 +39,7 @@ public static class RegisterDependentServices
 
         builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
-
-        //builder.Services.AddAuthentication(options =>
-        //{
-        //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        //})
-        //    .AddCookie()
-        //    .AddOpenIdConnect("Auth0", options =>
-        //    {
-        //        // Set the authority to the Auth0 domain
-        //        options.Authority = $"https://{Configuration["Auth0:Domain"]}";
-
-        //        // Configure Auth0 creds
-        //        options.ClientId = Configuration["Auth0:ClientId"];
-        //        options.ClientSecret = Configuration["Auth0:ClientSecret"];
-
-        //        // Set response type to code
-        //        options.ResponseType = OpenIdConnectResponseType.Code;
-
-        //        // Set scope
-        //        options.Scope.Clear();
-        //        options.Scope.Add("openid");
-
-        //        options.CallbackPath = new PathString("/callback");
-
-        //        // Set Issuer
-        //        options.ClaimsIssuer = "Auth0";
-
-        //        options.Events = new OpenIdConnectEvents
-        //        {
-        //            // handle the logout redirection
-        //            OnRedirectToIdentityProviderForSignOut = (context) =>
-        //            {
-        //                var logoutUri = $"https://{Configuration["Auth0:Domain"]}/v2/logout?clienid={Configuration["Auth0:ClientID"]}";
-
-        //                var postLogoutUri = context.Properties.RedirectUri;
-        //                if (!string.IsNullOrEmpty(postLogoutUri))
-        //                {
-        //                    if (postLogoutUri.StartsWith("/"))
-        //                    {
-        //                        //transform to absolute
-        //                        var request = context.Request;
-        //                        postLogoutUri = request.Scheme + "://" + request.Host + request.PathBase;
-        //                    }
-        //                    logoutUri += $"&returnTo={Uri.EscapeDataString(postLogoutUri)}";
-        //                }
-
-        //                context.Response.Redirect(logoutUri);
-        //                context.HandleResponse();
-
-        //                return Task.CompletedTask;
-        //            }
-        //        };
-        //    });
-
+        
         builder.Services.AddAutoMapper(config =>
         {
             config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
@@ -122,7 +54,26 @@ public static class RegisterDependentServices
         builder.Services.RegisterCore();
         builder.Services.AddControllers();
 
-        
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.AllowAnyOrigin();
+            });
+
+            //options.AddPolicy("AllowSpecificOrigin",
+            //    builder =>
+            //    {
+            //        builder
+            //        .WithOrigins("http://localhost:8080")
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials();
+            //    });
+        });
+
         builder.Services.AddSwaggerGen();
 
         return builder;

@@ -20,7 +20,7 @@ public class CreateJointCommandHandler : IRequestHandler<CreateJointCommand, str
     public CreateJointCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _joints = database.GetCollection<Joint>(settings.UserCollectionName);
+        _joints = database.GetCollection<Joint>(settings.JointCollectionName);
     }
 
     public async Task<string?> Handle(CreateJointCommand request, CancellationToken cancellationToken)

@@ -7,27 +7,42 @@ import TransactionService from "../service/transactionService";
 
 export const transactionActions = transactionSlice.actions;
 
-export const fetchTransactions = (): ThunkAction<
-  void,
-  RootState,
-  unknown,
-  AnyAction
-> => {
-  return async (dispath, getState) => {
-    if (getState().transaction.all_transactions.length === 0) {
-      const response: TransactionModel[] =
-        await TransactionService.getAllTransactions();
-      dispath(transactionActions.setTransactions(response));
+export const fetchTransactions = (
+  userId: string | undefined
+): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispath) => {
+    console.log("Trying to fetch transactions, userId: ", userId);
+    if (userId !== undefined) {
+      console.log("Fetching transactions, userId: ", userId);
+      const response: TransactionModel[] | string =
+        (await TransactionService.getAllTransactions(userId)) as
+          | TransactionModel[]
+          | string;
+      if (typeof response !== "string") {
+        dispath(transactionActions.setTransactions(response));
+      } else {
+        console.log("Fetching transactions failed, error: ", response);
+      }
+    } else {
+      console.log("Failed to fetch transactions, userId: ", userId);
     }
   };
 };
 
-export const fetchParticularTransaction = (
-  transaction_id: number
+export const postTransactions = (
+  transaction: TransactionModel
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
-  return async (dispatch, getState) => {
-    const response: TransactionModel =
-      await TransactionService.getParticularTransaction(transaction_id);
-    dispatch(transactionActions.setParticularTransaction(response));
+  return async (dispath) => {
+    console.log("Trying to post transaction", transaction);
+    if (transaction !== undefined) {
+      console.log("Posting transaction", transaction);
+      const response: TransactionModel =
+        (await TransactionService.postTransaction(
+          transaction
+        )) as TransactionModel;
+      dispath(transactionActions.createTransaction(response));
+    } else {
+      console.log("Failed to post transaction:", transaction);
+    }
   };
 };

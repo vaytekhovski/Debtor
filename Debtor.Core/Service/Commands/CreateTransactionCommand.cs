@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace Debtor.Core.Service.Commands;
 
-public class CreateTransactionCommand : IRequest<string?>
+public class CreateTransactionCommand : IRequest<Transaction?>
 {
     public string? UserFromId { get; set; }
     public string? UserToId { get; set; }
@@ -17,31 +17,34 @@ public class CreateTransactionCommand : IRequest<string?>
     public string Description { get; set; } = string.Empty;
 }
 
-public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, string?>
+public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, Transaction?>
 {
     public IMongoCollection<Transaction> _transactions { get; set; }
     public IMongoCollection<User> _users { get; set; }
     public IMongoCollection<Joint> _joints { get; set; }
 
+    private const string JUST_CREATED_STATUS = "created";
+
     public CreateTransactionCommandHandler(IMongoDBSettings settings, IMongoClient mongoClient)
     {
         IMongoDatabase database = mongoClient.GetDatabase(settings.DatabaseName);
-        _transactions = database.GetCollection<Transaction>(settings.UserCollectionName);
+        _transactions = database.GetCollection<Transaction>(settings.TransactionCollectionName);
         _users = database.GetCollection<User>(settings.UserCollectionName);
         _joints = database.GetCollection<Joint>(settings.JointCollectionName);
     }
 
-    public async Task<string?> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
+    public async Task<Transaction?> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
     {
         var transaction = new Transaction()
         {
             UserFromId = request.UserFromId,
             UserToId = request.UserToId,
-            JointId = request.JointId,
+            JointId = null,
             Amount = request.Amount,
             Type = request.Type,
-            Date = new DateTime(),
+            Date = DateTime.Now,
             Description = request.Description,
+            Status = JUST_CREATED_STATUS,
             UserFrom = await _users.Find(u => u.Id == request.UserFromId).FirstOrDefaultAsync(),
             UserTo = await _users.Find(u => u.Id == request.UserToId).FirstOrDefaultAsync(),
             Joint = await _joints.Find(j => j.Id == request.JointId).FirstOrDefaultAsync()
@@ -49,6 +52,6 @@ public class CreateTransactionCommandHandler : IRequestHandler<CreateTransaction
 
         await _transactions.InsertOneAsync(transaction);
 
-        return transaction.Id;
+        return transaction;
     }
 }

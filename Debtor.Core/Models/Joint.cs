@@ -7,8 +7,12 @@ namespace Debtor.Core.Models;
 [BsonIgnoreExtraElements]
 public class Joint
 {
+    public Joint()
+    {
+        this.Id = ObjectId.GenerateNewId().ToString();
+    }
+
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     [BsonElement("name")]
     public string Name { get; set; } = string.Empty;

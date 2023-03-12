@@ -31,5 +31,9 @@
     <None Remove="Microsoft.AspNetCore.Authentication.Cookies" />
     <None Remove="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
