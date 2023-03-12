@@ -6,9 +6,7 @@ I started a long-conceived project. Here you can manage your debts and loans and
 
 Just build and run backend part and make sure app is working well [https://localhost:7117/index.html](https://localhost:7117/index.html)
 
-## Local Fron-end deployment
-
-#### .ENV file
+## Local Front-end deployment
 
 Create ```.env``` file and fill with your properties.
 
